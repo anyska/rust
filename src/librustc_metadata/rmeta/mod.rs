@@ -23,6 +23,7 @@ use rustc_span::symbol::Symbol;
 use rustc_span::{self, Span};
 use rustc_target::spec::{PanicStrategy, TargetTriple};
 use syntax::ast;
+use syntax::tokenstream::TokenStream;
 
 use std::marker::PhantomData;
 use std::num::NonZeroUsize;
@@ -324,7 +325,7 @@ struct ModData {
 
 #[derive(RustcEncodable, RustcDecodable)]
 struct MacroDef {
-    body: String,
+    body: TokenStream,
     legacy: bool,
 }
 

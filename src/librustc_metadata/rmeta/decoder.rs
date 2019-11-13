@@ -1341,9 +1341,9 @@ impl<'a, 'tcx> CrateMetadata {
         }
     }
 
-    fn get_macro(&self, id: DefIndex) -> MacroDef {
+    fn get_macro(&self, id: DefIndex, sess: &Session) -> MacroDef {
         match self.kind(id) {
-            EntryKind::MacroDef(macro_def) => macro_def.decode(self),
+            EntryKind::MacroDef(macro_def) => macro_def.decode((self, sess)),
             _ => bug!(),
         }
     }
